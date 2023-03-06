@@ -48,3 +48,24 @@ Example for a string 'Holberton':
              10 BINARY_ADD
              11 RETURN_VALUE
   ```
+
+## Technical interview preparation
+
+[10-check_cycle.c](./10-check_cycle.c) contains a C function that checks if a singly linked list has a cycle in it
+
+  **Prototype:**
+
+  ```C
+  int check_cycle(listint_t *list);
+  ```
+
+  **Return:** 0 if there is no cycle, 1 if there is a cycle
+
+[10-linked_lists.c](./10-linked_lists.c) contains functions for adding nodes to a linked list, freeing and printing a linked list  
+[10-main.c](./10-main.c) contains `main()` and is used to check the written function
+
+### Compilation
+
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 10-main.c 10-check_cycle.c 10-linked_lists.c -o cycle && ./cycle
+```
