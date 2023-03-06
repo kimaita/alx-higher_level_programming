@@ -36,3 +36,4 @@ Example for a string 'Holberton':
 
 * [8-concat_edges.py](./8-concat_edges.py) prints `object-oriented programming with Python`, followed by a new line.
 * [9-easter_egg.py](./9-easter_egg.py): a Python script(<=98 characters) that prints “The Zen of Python”, by TimPeters
+* [100-write.py](./100-write.py) uses `write()` from the `sys` module to print `and that piece of art is useful - Dora Korpar, 2015-10-19` to `stderr`
