@@ -37,3 +37,14 @@ Example for a string 'Holberton':
 * [8-concat_edges.py](./8-concat_edges.py) prints `object-oriented programming with Python`, followed by a new line.
 * [9-easter_egg.py](./9-easter_egg.py): a Python script(<=98 characters) that prints “The Zen of Python”, by TimPeters
 * [100-write.py](./100-write.py) uses `write()` from the `sys` module to print `and that piece of art is useful - Dora Korpar, 2015-10-19` to `stderr`
+* [101-compile](./101-compile) compiles a python script into a similarly named `.pyc` file
+* [102-magic_calculation.py](./102-magic_calculation.py) contains a function(`magic_calculation()`) thats does the same as the bytecode:
+
+  ```bash
+  3           0 LOAD_CONST               1 (98)
+              3 LOAD_FAST                0 (a)
+              6 LOAD_FAST                1 (b)
+              9 BINARY_POWER
+             10 BINARY_ADD
+             11 RETURN_VALUE
+  ```
