@@ -1,2 +1,5 @@
-# alx-higher_level_programming
-alx Python projects
+# Higher level programming
+
+Stepping away from C to some higher level languages.
+
+## Python
