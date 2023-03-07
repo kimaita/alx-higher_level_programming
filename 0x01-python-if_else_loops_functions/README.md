@@ -61,7 +61,14 @@ Use of `while` and `for` loops in Python.
   01, 02, 03, 04, 05, 06, 07, 08, 09, 12, 13, 14, 15, 16, 17, 18, 19, 23, 24, 25, 26, 27, 28, 29, 34, 35, 36, 37, 38, 39, 45, 46, 47, 48, 49, 56, 57, 58, 59, 67, 68, 69, 78, 79, 89
   ```
 
-## functions
+* [100-print_tebahpla.py](./100-print_tebahpla.py) prints the ASCII alphabet, in reverse order, alternating lowercase and uppercase, not followed by a new line.  
+ **Output:**
+
+  ```bash
+  zYxWvUtSrQpOnMlKjIhGfEdCbA
+  ```
+
+## Functions
 
 Function usage  
 `return` and `None` returns  
@@ -128,4 +135,11 @@ Variable scopes
 
   ```bash
   1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz 16 17 Fizz 19 Buzz Fizz 22 23 Fizz Buzz 26 Fizz 28 29 FizzBuzz 31 32 Fizz 34 Buzz Fizz 37 38 Fizz Buzz 41 Fizz 43 44 FizzBuzz 46 47 Fizz 49 Buzz Fizz 52 53 Fizz Buzz 56 Fizz 58 59 FizzBuzz 61 62 Fizz 64 Buzz Fizz 67 68 Fizz Buzz 71 Fizz 73 74 FizzBuzz 76 77 Fizz 79 Buzz Fizz 82 83 Fizz Buzz 86 Fizz 88 89 FizzBuzz 91 92 Fizz 94 Buzz Fizz 97 98 Fizz Buzz
+  ```
+
+* [101-remove_char_at](./101-remove_char_at.py) contains a funtion that creates a copy of a string, removing the character at the position n (not the Python way, the “C array index”)  
+**Prototype:**
+
+  ```python
+  def remove_char_at(str, n):
   ```
