@@ -2,8 +2,8 @@
 def fizzbuzz():
     """Prints 1 to 100
 
-    Prints Fizz for multiples of 3, 
-    Buzz for multiples of 5,    
+    Prints Fizz for multiples of 3,
+    Buzz for multiples of 5,
     FizzBuzz for multiples of both 3 and 5
     """
     for i in range(1, 101):
