@@ -2,7 +2,8 @@
 import random
 number = random.randint(-10000, 10000)
 last_digit = abs(number) % 10
-last_digit *= number//abs(number)  # retrieve the sign
+if number != 0:
+    last_digit *= number//abs(number)  # retrieve the sign
 is_what = ''
 if last_digit > 5:
     is_what = 'greater than 5'
