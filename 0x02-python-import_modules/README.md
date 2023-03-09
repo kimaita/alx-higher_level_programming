@@ -37,9 +37,9 @@ sys.argv[index]
 
 [^1]: script name is usually index 0  
 [^2]: This can be confirmed by importing using `__import__`  _e.g_ for 0-add
-```bash
-  $ cat 0-import_add.py
-  __import__("0-add")
-  $ python3 0-import_add.py 
-  $ 
-```
+  ```bash
+    $ cat 0-import_add.py
+    __import__("0-add")
+    $ python3 0-import_add.py 
+    $ 
+  ```
