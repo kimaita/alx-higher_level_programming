@@ -29,6 +29,16 @@ The tasks here require running without executing code[^2] when importing.
   98
   ```
 
+* [101-easy_print.py](./101-easy_print.py) prints `#pythoniscool` in the standard output without using `print` or `eval` or `open` or `import sys` in the file
+**Output:**
+
+  ```bash
+  $ ./101-easy_print.py
+  #pythoniscool
+  ```
+
+   _Solution from [Dkazem91](https://github.com/Dkazem91)'s [repo](https://github.com/Dkazem91/holbertonschool-higher_level_programming/tree/master/0x02-python-import_modules)_
+
 * [103-fast_alphabet.py](./103-fast_alphabet.py) prints the alphabet in uppercase, followed by a new line without looping, conditionals, `str.join()`, string literals or system calls.
 **Output:**
 
