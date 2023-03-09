@@ -22,6 +22,20 @@ The tasks here require running without executing code[^2] when importing.
   10 / 5 = 2
   ```
 
+* [5-variable_load.py](./5-variable_load.py) imports the variable `a` from [variable_load_5.py](./variable_load_5.py) and prints its value.  
+**Output:**
+
+  ```bash
+  98
+  ```
+
+* [103-fast_alphabet.py](./103-fast_alphabet.py) prints the alphabet in uppercase, followed by a new line without looping, conditionals, `str.join()`, string literals or system calls.
+**Output:**
+
+  ```bash
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  ```
+
 ## Command line arguments
 
 These arguments are stored in the `sys` module’s `argv` attribute as a list[^1].
@@ -60,16 +74,31 @@ sys.argv[index]
   -162
   ```
 
-* [5-variable_load.py](./5-variable_load.py) imports the variable `a` from [variable_load_5.py](./variable_load_5.py) and prints its value.  
-**Output:**
+* [100-my_calculator.py](./100-my_calculator.py) imports all functions from the file [calculator_1.py](./calculator_1.py) and handles basic operations, as specified by the arguments. The programs exits with the value `1` and prints a message:
+
+  * `Usage: ./100-my_calculator.py <a> <operator> <b>` if the arguments are not 3
+
+  * `Unknown operator. Available operators: +, -, * and /` if the operator is not recognised
+  
+  **Example:**
 
   ```bash
-  98
+  $ ./100-my_calculator.py 3 + 5 ; echo $?
+  3 + 5 = 8
+  0
+
+  $ ./100-my_calculator.py ; echo $?
+  Usage: ./100-my_calculator.py <a> <operator> <b>
+  1
+
+  $ ./100-my_calculator.py 3 H 5 ; echo $?
+  Unknown operator. Available operators: +, -, * and /
+  1 
   ```
 
-## [Module](https://docs.python.org/3.8/tutorial/modules.html)
+## [Modules](https://docs.python.org/3.8/tutorial/modules.html)
 >
-> File containing Python definitions and statements
+> Files containing Python definitions and statements
 
 * [4-hidden_discovery.py](./4-hidden_discovery.py) prints all the names defined by a [compiled module](https://github.com/holbertonschool/0x02.py/raw/master/hidden_4.pyc) that do not start with __, in alpha order  
 **Output:**
