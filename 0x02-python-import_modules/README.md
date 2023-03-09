@@ -32,7 +32,7 @@ import sys
 sys.argv[index]
 ```
 
-* [2-args.py](./2-args.py) prints the number of and the list of its arguments each on a line
+* [2-args.py](./2-args.py) prints the number of and the list of its arguments each on a line  
 **Example:**
 
   ```bash
