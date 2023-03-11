@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def multiple_returns(sentence):
     """Returns the length of sentence,
     and its first character or None if empty
