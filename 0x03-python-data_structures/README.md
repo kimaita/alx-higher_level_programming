@@ -104,7 +104,7 @@ Both lists and tuples are:
 **Prototype:**
 
   ```python
-  def divisible_by_2(my_list=[])
+  def divisible_by_2(my_list=[]):
   ```
 
 * [11-delete_at.py](./11-delete_at.py) contains a a function that deletes the item at a specific position in a list without usinf `pop()`. If the index is negative or out of range, nothing changes (returns the same list).  
