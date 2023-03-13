@@ -7,5 +7,6 @@ def print_reversed_list_integer(my_list=[]):
     Args:
         my_list: list to print. Defaults to [].
     """
-    for i in my_list[::-1]:
-        print('{:d}'.format(i))
+    if (my_list):
+        for i in my_list[::-1]:
+            print('{:d}'.format(i))
