@@ -1,6 +1,5 @@
 #include "lists.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 /**
  * is_palindrome - checks if a songly linked list as a palindrome
@@ -32,8 +31,8 @@ int is_palindrome(listint_t **head)
 		it = it->next;
 		i++;
 	}
-
 	i--;
+	
 	if (len % 2)
 		it = it->next;
 
@@ -44,7 +43,7 @@ int is_palindrome(listint_t **head)
 		i--;
 		it = it->next;
 	}
-
+	free(elem);
 	return (1);
 }
 
