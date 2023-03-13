@@ -135,3 +135,72 @@ Both lists and tuples are:
 ### Multiple assignment
 
 * [12-switch.py](./12-switch.py) switches the values of `a` and `b`
+
+## CPython - Lists
+
+An under the hood look at the implementation of Python in C.  
+Lists are implementd by the [`PyListObject`](https://docs.python.org/3.4/c-api/list.html) which is a subtype of `PyObject`, the basic structure for these Python implementations
+
+* [100-print_python_list_info](./100-print_python_list_info.c) contains a C funtion that prints some basic info about Python lists.  
+**Prototype:**
+
+  ```c
+  void print_python_list_info(PyObject *p);
+  ```
+
+  **Compilation:**
+
+  ```bash
+  gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,PyList -o libPyList.so -fPIC -I/usr/include/python3.4 100-print_python_list_info.c
+  ```
+
+### Usage & Output
+
+  Create a Python file and import `ctypes` then load the just created shared library using the `CDLL` method:
+
+  ```python
+  import ctypes
+
+  lib = ctypes.CDLL('./libPyList.so')
+  lib.print_python_list_info.argtypes = [ctypes.py_object]
+  ```
+
+  Create a list and call the C funtion on it:
+
+  ```python
+  li = ['hello', 'World']
+  lib.print_python_list_info(li)
+  l = []
+  lib.print_python_list_info(l)
+  l.append(0)
+  lib.print_python_list_info(l)
+  ```
+
+  Which gives:
+
+  ```bash
+  [*] Size of the Python List = 2
+  [*] Allocated = 2
+  Element 0: str
+  Element 1: str
+  [*] Size of the Python List = 0
+  [*] Allocated = 0
+  [*] Size of the Python List = 1
+  [*] Allocated = 4
+  Element 0: int
+  ```
+
+## Technical Interview Preparation
+
+[13-is_palindrome.c](./13-is_palindrome.c) contains a C function that checks if a singly linked list is a palindrome.  
+**Prototype:**
+
+```c
+int is_palindrome(listint_t **head);
+```
+
+**Returns:**  
+
+* `1` for palindromes (including empty lists)
+
+* `0` non-palindromes
