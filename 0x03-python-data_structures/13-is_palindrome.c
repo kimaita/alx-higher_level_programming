@@ -39,8 +39,6 @@ int is_palindrome(listint_t **head)
 
 	while (it)
 	{
-		printf("%d  ", it->n);
-		printf("%d vs %d - ", it->n, *(elem + i));
 		if (it->n != *(elem + i))
 			return (0);
 		i--;
