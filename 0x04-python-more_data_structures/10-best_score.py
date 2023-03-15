@@ -13,5 +13,5 @@ def best_score(a_dictionary):
     sorted_k = sorted(a_dictionary.keys(),
                       reverse=True,
                       key=lambda x: a_dictionary.get(x))
-    best = sorted_k[0] or None
+    best = sorted_k[0]
     return best
