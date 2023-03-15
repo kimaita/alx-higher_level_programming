@@ -5,8 +5,8 @@ def only_diff_elements(set_1, set_2):
     Args:
         set_1: the first set
         set_2: the second set
-        
+
     Returns:
-        The symmetric difference of set_1 and set_2 
+        The symmetric difference of set_1 and set_2
     """
     return set_1.symmetric_difference(set_2)
