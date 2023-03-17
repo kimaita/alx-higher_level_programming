@@ -20,9 +20,9 @@ void print_python_bytes(PyObject *p)
 		PyBytes_AsStringAndSize(p, (char **)&data, &size);
 
 		size = ((size + 1) <= 10) ? size + 1 : 10;
-		printf("  first %ld bytes: ", size);
+		printf("  first %ld bytes:", size);
 		for (int i = 0; i < size; i++)
-			printf("%02x ", (unsigned char)data[i]);
+			printf(" %02x", (unsigned char)data[i]);
 		printf("\n");
 	}
 	else
