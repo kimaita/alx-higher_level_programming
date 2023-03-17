@@ -26,4 +26,4 @@ def roman_to_int(roman_string):
             num += right
             return num
     else:
-        return None
+        return 0
