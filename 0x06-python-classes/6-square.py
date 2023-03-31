@@ -74,9 +74,9 @@ class Square:
         """Prints in `stdout` the square with the character `#`
         starting at `__position`
         """
-        for i in range(self.position[1]):
-            print('')
         if self.size:
+            for i in range(self.position[1]):
+                print('')
             for i in range(self.size):
                 print(' '*self.position[0], end='')
                 print('#'*self.size, end='')
