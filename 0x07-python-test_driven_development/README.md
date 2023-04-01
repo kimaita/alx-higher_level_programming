@@ -42,7 +42,7 @@ There are several common ways to use `doctest`:
 
 * `testmod()`: checks a module's/function's docstrings.
 
-  Say a module `example`:
+  [Say a module `example`](https://docs.python.org/3.8/library/doctest.html#simple-usage-checking-examples-in-docstrings):
 
   ```python
   """
@@ -58,28 +58,12 @@ There are several common ways to use `doctest`:
   def factorial(n):
       """Return the factorial of n, an exact integer >= 0.
 
-      >>> [factorial(n) for n in range(6)]
-      [1, 1, 2, 6, 24, 120]
       >>> factorial(30)
       265252859812191058636308480000000
       >>> factorial(-1)
       Traceback (most recent call last):
               ...
       ValueError: n must be >= 0
-
-      Factorials of floats are OK, but the float must be an exact integer:
-      >>> factorial(30.1)
-      Traceback (most recent call last):
-              ...
-      ValueError: n must be exact integer
-      >>> factorial(30.0)
-      265252859812191058636308480000000
-
-      It must also not be ridiculously large:
-      >>> factorial(1e100)
-      Traceback (most recent call last):
-              ...
-      OverflowError: n too large
       """
 
       import math
@@ -108,53 +92,35 @@ There are several common ways to use `doctest`:
 
   ```bash
   $ python example.py -v
+ 
   Trying:
-  [factorial(n) for n in range(6)]
+    factorial(5)
   Expecting:
-  [1, 1, 2, 6, 24, 120]
+    120
   ok
   Trying:
-  factorial(30)
+    factorial(30)
   Expecting:
-  265252859812191058636308480000000
+    265252859812191058636308480000000
   ok
   Trying:
-  factorial(-1)
+    factorial(-1)
   Expecting:
-  Traceback (most recent call last):
-    ...
-  ValueError: n must be >= 0
-  ok
-  Trying:
-  factorial(30.1)
-  Expecting:
-  Traceback (most recent call last):
-    ...
-  ValueError: n must be exact integer
-  ok
-  Trying:
-  factorial(30.0)
-  Expecting:
-  265252859812191058636308480000000
-  ok
-  Trying:
-  factorial(1e100)
-  Expecting:
-  Traceback (most recent call last):
-    ...
-  OverflowError: n too large
+    Traceback (most recent call last):
+            ...
+    ValueError: n must be >= 0
   ok
   2 items passed all tests:
-  1 tests in __main__
-  6 tests in __main__.factorial
-  7 tests in 2 items.
-  7 passed and 0 failed.
+    1 tests in __main__
+    2 tests in __main__.factorial
+  3 tests in 2 items.
+  3 passed and 0 failed.
   Test passed.
   ```
 
 * `testfile()` testing by verifying that interactive examples from a test file or a test object work as expected.
 
-  Say a file `example.txt`:
+  [Say a file `example.txt`](https://docs.python.org/3.8/library/doctest.html#simple-usage-checking-examples-in-a-text-file):
 
   ```
   Tests factorial as defined in example.py
