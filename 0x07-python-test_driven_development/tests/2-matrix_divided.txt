@@ -3,7 +3,7 @@ Tests for ``2-matrix_divided``
 
 Functions:
 ----------
-1. ``matrix_divided(matrix, matrix_divided)``
+1. ``matrix_divided(matrix, div)``
 This function divides all elements of `matrix` by `div`, rounding to 2 decimal places
 
 `matrix` is a list of lists of integers or floats with each row beinf the same size
