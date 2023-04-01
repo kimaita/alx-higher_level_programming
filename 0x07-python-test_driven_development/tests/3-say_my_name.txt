@@ -1,0 +1,53 @@
+Tests for ``3-say_my_name``
+===========================
+
+Functions:
+----------
+1. ``say_my_name(first_name, last_name="")``
+This function prints ``My name is <first name> <last name>``
+
+``first_name`` and ``last_name`` are strings
+
+import the function from the module:
+>>> say_name = __import__('3-say_my_name').say_my_name
+
+Tests
+-----
+
+Normal inputs:
+>>> say_name('John', 'Doe')
+My name is John Doe
+
+Missing ``last_name``:
+(Default value is empty string)
+>>> say_name('Shanks')
+My name is Shanks 
+
+Empty ``first_name``:
+>>> say_name("", 'Chopper')
+My name is  Chopper
+
+Non-string names:
+(Raise ``TypeError`` exception, detail: 'first_name must be a string' or
+ 'last_name must be a string' accordingly)
+>>> say_name([])
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> say_name(None)
+Traceback (most recent call last):
+    ...
+TypeError: first_name must be a string
+
+>>> say_name('Zoro', [])
+Traceback (most recent call last):
+    ...
+TypeError: last_name must be a string
+
+Exception printing:
+>>> try:
+...     say_name('Zoro', [])
+... except Exception as e:
+...     print(e)
+last_name must be a string
