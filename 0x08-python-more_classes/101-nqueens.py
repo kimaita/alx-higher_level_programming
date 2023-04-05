@@ -18,7 +18,7 @@ if __name__ == "__main__":
     n = sys.argv.pop()
     try:
         n = int(n)
-    except:
+    except ValueError:
         print('N must be a number')
         exit(1)
     if n < 4:
