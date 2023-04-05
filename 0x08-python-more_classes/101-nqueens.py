@@ -16,10 +16,12 @@ if __name__ == "__main__":
         exit(1)
 
     n = sys.argv.pop()
-    if not isinstance(n, int):
+    try:
+        n = int(n)
+    except:
         print('N must be a number')
         exit(1)
-    elif n < 4:
+    if n < 4:
         print('N must be at least 4')
         exit(1)
     else:
