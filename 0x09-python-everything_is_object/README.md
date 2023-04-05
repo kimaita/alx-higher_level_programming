@@ -261,3 +261,51 @@ True
   b = ()
   a is b
   ```
+
+----
+
+#### [100-magic_string.py](./100-magic_string.py)
+
+Contains a function `magic_string()` that returns a string `"BestSchool"` `n` times the number of the iteration, i.e.
+
+[Calling script](./100-main.py):
+
+```python
+for i in range(10):
+    print(magic_string())
+```
+
+Output:
+
+```bash
+$ ./100-main.py | cat -e
+BestSchool$
+BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool, BestSchool$
+```
+
+#### [101-locked_class.py](./101-locked_class.py)
+
+Contains a class `LockedClass` with no class or object attribute, that prevents the user from dynamically creating new instance attributes, except if the new instance attribute is called `first_name` e.g:
+
+```python
+lc = LockedClass()
+lc.first_name = "John"
+try:
+    lc.last_name = "Snow"
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
+```
+
+Output:
+
+```bash
+[AttributeError] 'LockedClass' object has no attribute 'last_name'
+```
