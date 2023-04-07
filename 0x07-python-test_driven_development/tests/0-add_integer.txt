@@ -28,6 +28,14 @@ Float inputs:
 25
 >>> add(14.7, 3)
 17
+>>> add(float('inf'), 2.0)
+Traceback (most recent call last):
+   ...
+OverflowError: cannot convert float infinity to integer
+>>> add(float('NaN'), 2.0)
+Traceback (most recent call last):
+   ...
+ValueError: cannot convert float NaN to integer
 
 Default value for b (98):
 >>> add(2)
