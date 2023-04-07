@@ -1,0 +1,50 @@
+Tests for ``5-text_indentation``
+===========================
+
+Functions:
+----------
+1. ``text_indentation(text)``
+This function prints a text with 2 new lines after each of the characters: . ? and :
+
+`text` is a string
+
+import the function from the module:
+>>> indent = __import__('5-text_indentation').text_indentation
+
+Tests
+-----
+
+Normal inputs:
+>>> indent("We have: This ends in a dot. Then it's a question?")
+We have:
+<BLANKLINE>
+This ends in a dot.
+<BLANKLINE>
+Then it's a question?
+<BLANKLINE>
+>>> indent("The character. isn't at the end")
+The character.
+<BLANKLINE>
+isn't at the end
+
+Missing argument:
+>>> indent()
+Traceback (most recent call last):
+    ...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Empty ``text``:
+>>> indent("")
+
+
+Non-string text:
+(Raise ``TypeError`` exception, detail: 'text must be a string')
+>>> indent([])
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> indent(None)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
