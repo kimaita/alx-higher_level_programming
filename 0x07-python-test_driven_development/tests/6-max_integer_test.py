@@ -19,6 +19,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([23, 2, 5, 4]), 23)
         self.assertEqual(max_integer([1, -23, 2, 5, 4]), 5)
         self.assertEqual(max_integer([-2, -5, -65, -15]), -2)
+        self.assertEqual(max_integer([4]), 4)
 
     def test_not_iterable_or_all_ints(self):
         """Should raise a type error"""
