@@ -66,3 +66,8 @@ TypeError: div must be a number
 Traceback (most recent call last):
     ...
 ZeroDivisionError: division by zero
+
+`div` == inf
+>>> matrix = [[1, 2, 4], [3, 5, 6]]
+>>> print(div(matrix, float('inf')))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
