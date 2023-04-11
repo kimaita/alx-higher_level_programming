@@ -17,8 +17,8 @@ Tests
 -----
 Initialization:
 >>> bg = BG()
->>> bg.__class__
-<class '7-base_geometry.BaseGeometry'>
+>>> print(bg.__class__.__name__)
+BaseGeometry
 
 area()
 (Should raise an Exception)
@@ -70,3 +70,12 @@ Bad type args:
 Traceback (most recent call last):
     ...
 TypeError: bad must be an integer
+>>> bg.integer_validator('boool', True)
+Traceback (most recent call last):
+    ...
+TypeError: boool must be an integer
+>>> bg.integer_validator('fl', 3.0)
+Traceback (most recent call last):
+    ...
+TypeError: fl must be an integer
+
