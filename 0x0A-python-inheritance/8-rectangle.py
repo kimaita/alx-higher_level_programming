@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""This module contains a base geometry class and an inherited class"""
 
 
 class BaseGeometry:
@@ -26,14 +26,18 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
-    """_summary_
-
-
+    """Describes a rectangle, with width and height
     """
     __width = int()
     __height = int()
 
     def __init__(self, width, height):
+        """Initializes an instance, setting the width and height
+
+        Args:
+            width (int): rectangle's width
+            height (height): rectangle's height
+        """
         if self.integer_validator('width', width):
             self.__width = width
         if self.integer_validator('height', height):
