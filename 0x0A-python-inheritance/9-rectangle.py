@@ -1,28 +1,11 @@
 #!/usr/bin/python3
-"""This module contains a base geometry class and an inherited class"""
+"""This module contains an inherited class
 
+Attributes:
+    BaseGeometry: parent class for `Rectangle`
+"""
 
-class BaseGeometry:
-    """A class for input validation"""
-
-    def area(self):
-        raise Exception('area() is not implemented')
-
-    def integer_validator(self, name, value):
-        """Checks if a given argument is an integer greater then 0
-
-        Args:
-            name (str): a name for the `value` argument
-            value (int): the value to validate
-
-        Raises:
-            TypeError: when `value` is not an `int`
-            ValueError: when `value` is not greater than 0
-        """
-        if type(value) != int:
-            raise TypeError(f'{name} must be an integer')
-        if value <= 0:
-            raise ValueError(f'{name} must be greater than 0')
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
@@ -47,4 +30,4 @@ class Rectangle(BaseGeometry):
         return self.__width * self.__height
 
     def __str__(self):
-        return f"[{self.__class__.__name__}] {self.__width}/{self.__height}"
+        return f"[Rectangle] {self.__width}/{self.__height}"
