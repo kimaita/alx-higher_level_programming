@@ -28,8 +28,6 @@ class BaseGeometry:
 class Rectangle(BaseGeometry):
     """Describes a rectangle, with width and height
     """
-    __width = int()
-    __height = int()
 
     def __init__(self, width, height):
         """Initializes an instance, setting the width and height
@@ -39,6 +37,6 @@ class Rectangle(BaseGeometry):
             height (height): rectangle's height
         """
         if super().integer_validator('width', width):
-            __width = width
+            self.__width = width
         if super().integer_validator('height', height):
-            __height = height
+            self.__height = height
