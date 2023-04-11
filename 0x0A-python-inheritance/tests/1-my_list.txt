@@ -39,3 +39,14 @@ Negatives only:
 [-1, -21, -100, -34, -61]
 >>> negs.print_sorted()
 [-100, -61, -34, -21, -1]
+
+An empty list
+>>> emp = MyList()
+>>> emp.print_sorted()
+[]
+
+List with nan and inf
+>>> li.append(float('nan'))
+>>> li.append(float('inf'))
+>>> li.print_sorted()
+[-23, -1, 0, 1, 2, 4, 100, nan, inf]
