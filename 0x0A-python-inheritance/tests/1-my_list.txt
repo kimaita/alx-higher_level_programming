@@ -1,0 +1,41 @@
+Tests for ``1-my_list``
+===========================
+
+Functions:
+----------
+1. ``print_sorted()`` a class method that prints a list of integers in ascending order
+
+import the class from the module:
+>>> MyList = __import__('1-my_list').MyList
+
+Tests
+-----
+Instantiation:
+>>> li = MyList() 
+
+Okay args:
+>>> li.append(1)
+>>> li.append(4)
+>>> li.append(0)
+>>> li.append(-23)
+>>> print(li)
+[1, 4, 0, -23]
+>>> li.print_sorted()
+[-23, 0, 1, 4]
+>>> li.append(2)
+>>> li.append(100)
+>>> li.append(-1)
+>>> li.print_sorted()
+[-23, -1, 0, 1, 2, 4, 100]
+
+Negatives only:
+>>> negs = MyList()
+>>> negs.append(-1)
+>>> negs.append(-21)
+>>> negs.append(-100)
+>>> negs.append(-34)
+>>> negs.append(-61)
+>>> print(negs)
+[-1, -21, -100, -34, -61]
+>>> negs.print_sorted()
+[-100, -61, -34, -21, -1]
