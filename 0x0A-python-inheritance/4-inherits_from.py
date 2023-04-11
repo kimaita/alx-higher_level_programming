@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""This module contains a function for checking class inheritance"""
 
 
 def inherits_from(obj, a_class):
