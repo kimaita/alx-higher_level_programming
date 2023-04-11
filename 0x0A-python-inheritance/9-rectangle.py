@@ -19,7 +19,7 @@ class BaseGeometry:
             TypeError: when `value` is not an `int`
             ValueError: when `value` is not greater than 0
         """
-        if value.__class__ != int:
+        if type(value) != int:
             raise TypeError(f'{name} must be an integer')
         if value <= 0:
             raise ValueError(f'{name} must be greater than 0')
@@ -42,6 +42,8 @@ class Rectangle(BaseGeometry):
             self.__height = height
 
     def area(self):
+        """Calculates and returns the area of the object
+        """
         return self.__width * self.__height
 
     def __str__(self):
