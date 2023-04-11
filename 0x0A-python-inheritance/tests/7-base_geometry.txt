@@ -1,0 +1,72 @@
+Tests for ``7-base_geometry``
+===========================
+
+Classes:
+--------
+1. BaseGeometry - contains two methods:
+
+ ``area()`` unimplemented, only raises an exception
+
+ ``integer_validator(name, value)`` checks whether `value` is an integer greater then 0
+    name: string name for value
+
+import the class from the module:
+>>> BG = __import__('7-base_geometry').BaseGeometry
+
+Tests
+-----
+Initialization:
+>>> bg = BG()
+>>> bg.__class__
+<class '7-base_geometry.BaseGeometry'>
+
+area()
+(Should raise an Exception)
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+integer_validator()
+Okay args:
+>>> bg.integer_validator("a", 3)
+>>> bg.integer_validator("a_int", 123)
+
+Bad value args:
+>>> bg.integer_validator('small', 0)
+Traceback (most recent call last):
+    ...
+ValueError: small must be greater than 0
+>>> bg.integer_validator('neg', -20)
+Traceback (most recent call last):
+    ...
+ValueError: neg must be greater than 0
+
+Missing args:
+>>> bg.integer_validator("b")
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> bg.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Empty args:
+>>> bg.integer_validator("", 45)
+
+Outlier args(float(nan/inf))
+>>> bg.integer_validator('infinite', int(float('inf')))
+Traceback (most recent call last):
+    ...
+OverflowError: cannot convert float infinity to integer
+>>> bg.integer_validator('nan', int(float('nan')))
+Traceback (most recent call last):
+    ...
+ValueError: cannot convert float NaN to integer
+
+Bad type args:
+>>> bg.integer_validator('bad', '2')
+Traceback (most recent call last):
+    ...
+TypeError: bad must be an integer
