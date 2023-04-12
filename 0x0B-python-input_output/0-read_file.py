@@ -8,7 +8,8 @@ def read_file(filename=""):
     Args:
         filename (str): Name of the fie. Defaults to "".
     """
-    with open(filename, 'r', encoding='utf-8') as f:
-        text = f.read()
-        if text:
-            print(text)
+    if filename:
+        with open(filename, 'r', encoding='utf-8') as f:
+            text = f.read()
+            if text:
+                print(text)
