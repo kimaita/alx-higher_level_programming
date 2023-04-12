@@ -1,4 +1,4 @@
-#!/usr/bon/python3
+#!/usr/bin/python3
 """This module contains a function for altering a file"""
 
 
