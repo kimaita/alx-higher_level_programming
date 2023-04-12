@@ -12,6 +12,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """Returns the object's dictionary representation"""
-        if attrs:
+        if attrs and type(attrs) == list and (not any(type(attr) != str
+                                                      for attr in attrs)):
             return {k: val for k, val in self.__dict__.items() if k in attrs}
         return self.__dict__
