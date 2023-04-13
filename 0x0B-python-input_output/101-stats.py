@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """A module with stdin reading funtionality"""
 import sys
-import traceback
 
 
 def print_results(size, codes):
@@ -27,6 +26,6 @@ if __name__ == "__main__":
             file_size += int(parts[-1])
             if not i % 10:
                 print_results(file_size, status_codes)
-    except KeyboardInterrupt:
+    except KeyboardInterrupt as e:
         print_results(file_size, status_codes)
-        traceback.print_exc()
+        raise
