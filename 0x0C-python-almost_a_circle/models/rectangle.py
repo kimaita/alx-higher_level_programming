@@ -64,7 +64,7 @@ class Rectangle(Base):
     def y(self, value):
         """setter for the y attribute"""
         if type(value) != int:
-            raise TypeError('height must be an integer')
+            raise TypeError('y must be an integer')
         if value < 0:
             raise ValueError('y must be >= 0')
         self.__y = value
