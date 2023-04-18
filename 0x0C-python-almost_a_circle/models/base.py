@@ -52,8 +52,8 @@ class Base:
             list_objs (list): list of objects to serialize
         """
         filename = f'{cls.__name__}.json'
-        dicts = [x.to_dictionary() for x in list_objs]
-        json_dict = cls.to_json_string(dicts) if list_objs else '[]'
+        dicts = [x.to_dictionary() for x in list_objs] if list_objs else []
+        json_dict = cls.to_json_string(dicts)
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(json_dict)
 
