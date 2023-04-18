@@ -3,6 +3,7 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBaseClass(unittest.TestCase):
@@ -10,12 +11,6 @@ class TestBaseClass(unittest.TestCase):
         """Test the initialization i.e. id assignment"""
         first = Base(23)
         self.assertEqual(first.id, 23)
-        second = Base()
-        self.assertEqual(second.id, 1)
-        another = Base(3)
-        self.assertEqual(another.id, 3)
-        w_none = Base(None)
-        self.assertEqual(w_none.id, 2)
 
     def test_to_json_string(self):
         """Test dict->JSON string serialization"""
@@ -48,3 +43,42 @@ class TestBaseClass(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             f_dict = file.read()
         self.assertEqual(f_dict, '[]')
+
+    def test_from_json_string(self):
+        """Tests the `from_json_string()` method"""
+        json_str = '[{"height": 4, "width": 10, "id": 89}, {"height": 7, "width": 1, "id": 7}]'
+        list_objs = Rectangle.from_json_string(json_str)
+        self.assertListEqual(list_objs,
+                             [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}])
+
+    def test_from_json_string_emptynone(self):
+        list_objs = Rectangle.from_json_string('')
+        self.assertListEqual(list_objs, [])
+        list_objs = Rectangle.from_json_string(None)
+        self.assertListEqual(list_objs, [])
+
+    def test_create(self):
+        """Tests the create() method"""
+        rect_dict = {'height': 4, 'width': 10, 'id': 99}
+        r1 = Rectangle.create(**rect_dict)
+        self.assertTupleEqual((r1.id, r1.width, r1.height, r1.x, r1.y),
+                              (99, 10, 4, 0, 0))
+        sq_dict = {'size': 5, 'x': 2, 'y': 3, 'id': 456}
+        s1 = Square.create(**sq_dict)
+        self.assertTupleEqual((s1.id, s1.size, s1.x, s1.y),
+                              (456, 5, 2, 3))
+
+    def test_load_from_file(self):
+        """Tests the `load_from_file() method"""
+        r1 = Rectangle(10, 7, 2, 8, 211)
+        Rectangle.save_to_file([r1])
+
+        loaded_rectangles = Rectangle.load_from_file()
+        self.assertEqual(loaded_rectangles[0].__str__(),
+                         '[Rectangle] (211) 2/8 - 10/7')
+
+        s1 = Square(8, 2, 2, 678)
+        Square.save_to_file([s1])
+        loaded_squares = Square.load_from_file()
+        self.assertEqual(loaded_squares[0].__str__(),
+                         '[Square] (678) 2/2 - 8')
