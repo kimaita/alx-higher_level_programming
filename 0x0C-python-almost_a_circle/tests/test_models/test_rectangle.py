@@ -51,7 +51,14 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.area(), 10)
 
     @patch('sys.stdout', new_callable=StringIO)
-    def test_display(self, mock_print):
+    def test_display_orig(self, mock_print):
+        """Tests the display() method"""
+        r1 = Rectangle(3, 3)
+        r1.display()
+        self.assertEqual('###\n###\n###\n', mock_print.getvalue())
+
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_display_xy(self, mock_print):
         """Tests the display() method"""
         r1 = Rectangle(3, 3, 1, 2)
         r1.display()
@@ -61,3 +68,49 @@ class TestRectangle(unittest.TestCase):
         """Test the __str__() method"""
         r1 = Rectangle(4, 3, 2, 1, 34)
         self.assertEqual(r1.__str__(), '[Rectangle] (34) 2/1 - 4/3')
+
+    def test_update_args(self):
+        """Tests the update() method using only *args"""
+        r1 = Rectangle(2, 5, 1, 1, 67)
+        r1.update(67)
+        self.assertEqual(r1.id, 67)
+        r1.update(67, 12)
+        self.assertEqual(r1.width, 12)
+        r1.update(67, 12, 6)
+        self.assertEqual(r1.height, 6)
+        r1.update(67, 12, 6, 3)
+        self.assertEqual(r1.x, 3)
+        r1.update(67, 12, 6, 3, 4)
+        self.assertEqual(r1.y, 4)
+
+    def test_update_badargs(self):
+        r1 = Rectangle(2, 3, 4, 4, 23)
+        with self.assertRaises(TypeError):
+            r1.update(2, '45')
+            r1.update(2, 45, '30')
+            r1.update(2, 45, 30, '1')
+        with self.assertRaises(ValueError):
+            r1.update(34, 0, 0)
+            r1.update(34, 4, 5, -1)
+
+    def test_update_kwargs(self):
+        """Test the update() method using only **kwargs"""
+        r1 = Rectangle(20, 30)
+        r1.update(height=1)
+        self.assertEqual(r1.height, 1)
+        r1.update(width=1, x=2)
+        self.assertTupleEqual((r1.width, r1.x), (1, 2))
+        r1.update(x=1, height=2, y=3, width=4, id=89)
+        self.assertTupleEqual(
+            (r1.width, r1.height, r1.x, r1.y, r1.id), (4, 2, 1, 3, 89))
+
+    def test_update_bad_kwargs(self):
+        r1 = Rectangle(20, 30)
+        with self.assertRaises(TypeError, msg='height must be an integer'):
+            r1.update(height='1')
+        with self.assertRaises(ValueError, msg='width must be > 0'):
+            r1.update(width=0)
+        with self.assertRaises(TypeError, msg='x must be an integer'):
+            r1.update(x='4')
+        with self.assertRaises(ValueError, msg='y must be >= 0'):
+            r1.update(y=-3)
