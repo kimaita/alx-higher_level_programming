@@ -104,7 +104,7 @@ class TestRectangle(unittest.TestCase):
         self.assertTupleEqual(
             (r1.width, r1.height, r1.x, r1.y, r1.id), (4, 2, 1, 3, 89))
 
-    def test_update_bad_kwargs(self):
+    def test_update_badkwargs(self):
         r1 = Rectangle(20, 30)
         with self.assertRaises(TypeError, msg='height must be an integer'):
             r1.update(height='1')
@@ -114,3 +114,20 @@ class TestRectangle(unittest.TestCase):
             r1.update(x='4')
         with self.assertRaises(ValueError, msg='y must be >= 0'):
             r1.update(y=-3)
+
+    def test_args_kwargs(self):
+        """Tests a combination of both args and kwargs
+
+        **kwargs skipped if *args exists and is not empty
+        """
+        r1 = Rectangle(3, 4)
+        r1.update(999, height=7)
+        self.assertTupleEqual((r1.id, r1.height), (999, 4))
+        r1.update(height=7)
+        self.assertTupleEqual((r1.id, r1.height), (999, 7))
+
+    def test_to_dictionary(self):
+        """Tests the to_dictionary() method"""
+        r1 = Rectangle(10, 2, 1, 9, 128)
+        self.assertDictEqual(
+            r1.to_dictionary(), {'x': 1, 'y': 9, 'id': 128, 'height': 2, 'width': 10})
