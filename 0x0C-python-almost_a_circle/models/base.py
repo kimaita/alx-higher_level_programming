@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module contains a base class"""
 import json
+import csv
 
 
 class Base:
@@ -70,12 +71,44 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Reads in  and returns a list of objects from a JSON file"""
+        """Reads in and returns a list of objects from a JSON file"""
         filename = f"{cls.__name__}.json"
         try:
             with open(filename, 'r', encoding='utf-8') as f:
                 json_str = f.read()
                 json_list = cls.from_json_string(json_str)
                 return [cls.create(**obj_dict) for obj_dict in json_list]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Saves objects to a csv file"""
+        filename = f"{cls.__name__}.csv"
+        with open(filename, 'w', encoding='utf-8', newline='') as f_csv:
+            if cls.__name__ == 'Rectangle':
+                fields = ['id', 'width', 'height', 'x', 'y']
+            elif cls.__name__ == 'Square':
+                fields = ['id', 'size', 'x', 'y']
+
+            writer = csv.DictWriter(
+                f_csv, fieldnames=fields)
+            writer.writeheader()
+            if list_objs:
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Reads in objects from a csv file"""
+        filename = f"{cls.__name__}.csv"
+        try:
+            if cls.__name__ == 'Rectangle':
+                fields = ['id', 'width', 'height', 'x', 'y']
+            elif cls.__name__ == 'Square':
+                fields = ['id', 'size', 'x', 'y']
+            with open(filename, 'r', encoding='utf-8', newline='') as f_csv:
+                reader = csv.DictReader(f_csv, fieldnames=fields)
+                return [cls.create(**row) for row in reader]
         except FileNotFoundError:
             return []
