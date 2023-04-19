@@ -142,13 +142,13 @@ class TestSquare(unittest.TestCase):
     def test_save_to_file(self):
         """Test the dict list->JSON->file operation"""
         s1 = Square(10, 2, 2, 87)
-        s2 = Square(4, 0, 0, 77)
+        s2 = Square(4)
         Square.save_to_file([s1, s2])
 
         with open("Square.json", "r") as file:
             f_dict = file.read()
         self.assertEqual(f_dict,
-                         '[{"id": 87, "size": 10, "x": 2, "y": 2}, {"id": 77, "size": 4, "x": 0, "y": 0}]')
+                         '[{"id": 87, "size": 10, "x": 2, "y": 2}, {"id": 37, "size": 4, "x": 0, "y": 0}]')
 
     def test_save_to_file_none(self):
         Square.save_to_file(None)

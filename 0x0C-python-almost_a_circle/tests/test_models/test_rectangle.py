@@ -33,21 +33,27 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.y, 3)
         self.assertEqual(r1.id, 45)
 
-    def test_badinit(self):
+    def test_badinit_width(self):
         with self.assertRaises(TypeError, msg='width must be an integer'):
             Rectangle("1", 2)
         with self.assertRaises(ValueError, msg='width must be > 0'):
             Rectangle(0, 2)
             Rectangle(-3, 2)
+
+    def test_badinit_height(self):
         with self.assertRaises(TypeError, msg='height must be an integer'):
             Rectangle(2, "2")
         with self.assertRaises(ValueError, msg='height must be > 0'):
             Rectangle(2, -2)
             Rectangle(2, 0)
+
+    def test_badinit_x(self):
         with self.assertRaises(TypeError, msg='x must be an integer'):
             Rectangle(2, 2, '0', 0)
         with self.assertRaises(ValueError, msg='x must be >= 0'):
             Rectangle(2, 2, -5, 0)
+
+    def test_badinit_y(self):
         with self.assertRaises(TypeError, msg='y must be an integer'):
             Rectangle(2, 2, 0, '0')
         with self.assertRaises(ValueError, msg='y must be >= 0'):
