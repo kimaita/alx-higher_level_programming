@@ -117,3 +117,43 @@ class Base:
 
         except FileNotFoundError:
             return []
+
+    def draw(list_rectangles, list_squares):
+        """Draws all given Rectangles and Squares in a new window
+
+        Uses the Turtle graopics module
+        """
+        import turtle
+
+        t = turtle.Turtle()
+        turtle.bgcolor('#e2dce1')
+        t.pen(pensize=2)
+        t.shape('circle')
+        t.shapesize(.5, .5, .5)
+
+        for rect in list_rectangles:
+            t.pencolor("#2b4647")
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            # splice the classname+id from string representation
+            idx = rect.__str__().index(')')+1
+            t.write(rect.__str__()[:idx])
+
+            for i in range(2):
+                t.fd(rect.width)
+                t.rt(90)
+                t.fd(rect.height)
+                t.rt(90)
+            t.penup()
+
+        for square in list_squares:
+            t.pencolor('#602b57')
+            t.goto(square.x, square.y)
+            t.pendown()
+            idx = square.__str__().index(')')+1
+            t.write(square.__str__()[:idx])
+            for i in range(4):
+                t.fd(square.size)
+                t.rt(90)
+            t.penup()
+        turtle.exitonclick()
