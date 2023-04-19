@@ -18,7 +18,19 @@ class TestSquare(unittest.TestCase):
 
     def test_badinit(self):
         with self.assertRaises(TypeError, msg='width must be an integer'):
-            s = Square('5')
+            Square('5')
+        with self.assertRaises(ValueError, msg='width must be > 0'):
+            Square(0)
+        with self.assertRaises(ValueError, msg='width must be > 0'):
+            Square(-5)
+        with self.assertRaises(TypeError, msg='x must be an integer'):
+            Square(5, '1')
+        with self.assertRaises(ValueError, msg='x must be >= 0'):
+            Square(5, -1)
+        with self.assertRaises(TypeError, msg='y must be an integer'):
+            Square(5, 1, '1')
+        with self.assertRaises(ValueError, msg='y must be >= 0'):
+            Square(5, 1, -1)
 
     def test_str(self):
         """Test the __str__() method"""
@@ -118,3 +130,41 @@ class TestSquare(unittest.TestCase):
         s = Square(5, 2, 2, 678)
         self.assertDictEqual(s.to_dictionary(),
                              {'id': 678, 'x': 2, 'size': 5, 'y': 2})
+
+    def test_load_from_file(self):
+        """Tests the `load_from_file() method"""
+        s1 = Square(8, 2, 2, 678)
+        Square.save_to_file([s1])
+        loaded_squares = Square.load_from_file()
+        self.assertEqual(loaded_squares[0].__str__(),
+                         '[Square] (678) 2/2 - 8')
+
+    def test_save_to_file(self):
+        """Test the dict list->JSON->file operation"""
+        s1 = Square(10, 2, 2, 87)
+        s2 = Square(4, 0, 0, 77)
+        Square.save_to_file([s1, s2])
+
+        with open("Square.json", "r") as file:
+            f_dict = file.read()
+        self.assertEqual(f_dict,
+                         '[{"id": 87, "size": 10, "x": 2, "y": 2}, {"id": 77, "size": 4, "x": 0, "y": 0}]')
+
+    def test_save_to_file_none(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            f_dict = file.read()
+        self.assertEqual(f_dict, '[]')
+
+    def test_save_to_file_empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            f_dict = file.read()
+        self.assertEqual(f_dict, '[]')
+
+    def test_create(self):
+        """Tests the create() method"""
+        sq_dict = {'size': 5, 'x': 2, 'y': 3, 'id': 456}
+        s1 = Square.create(**sq_dict)
+        self.assertTupleEqual((s1.id, s1.size, s1.x, s1.y),
+                              (456, 5, 2, 3))
