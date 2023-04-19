@@ -106,7 +106,7 @@ class Base:
                 fields = ['id', 'width', 'height', 'x', 'y']
             elif cls.__name__ == 'Square':
                 fields = ['id', 'size', 'x', 'y']
-                
+
             with open(filename, 'r', encoding='utf-8', newline='') as f_csv:
                 reader = csv.DictReader(
                     f_csv, fieldnames=fields, quoting=csv.QUOTE_NONNUMERIC)
