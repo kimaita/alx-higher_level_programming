@@ -92,11 +92,10 @@ class Base:
                 fields = ['id', 'size', 'x', 'y']
 
             writer = csv.DictWriter(
-                f_csv, fieldnames=fields)
+                f_csv, fieldnames=fields, quoting=csv.QUOTE_NONNUMERIC)
             writer.writeheader()
             if list_objs:
-                for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+                writer.writerows(obj.to_dictionary() for obj in list_objs)
 
     @classmethod
     def load_from_file_csv(cls):
@@ -107,8 +106,14 @@ class Base:
                 fields = ['id', 'width', 'height', 'x', 'y']
             elif cls.__name__ == 'Square':
                 fields = ['id', 'size', 'x', 'y']
+                
             with open(filename, 'r', encoding='utf-8', newline='') as f_csv:
-                reader = csv.DictReader(f_csv, fieldnames=fields)
-                return [cls.create(**row) for row in reader]
+                reader = csv.DictReader(
+                    f_csv, fieldnames=fields, quoting=csv.QUOTE_NONNUMERIC)
+
+                next(reader)  # skip the header row
+                return [cls.create(**{k: int(v) for k, v in row.items()})
+                        for row in reader]
+
         except FileNotFoundError:
             return []
