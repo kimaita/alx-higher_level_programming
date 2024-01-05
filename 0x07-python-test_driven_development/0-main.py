@@ -18,10 +18,10 @@ try:
     print(add_integer([1, 3], 4))
 except Exception as e:
     print(e)
-    
+
 try:
     print(add_integer(5, 4, 5))
 except Exception as e:
     print(e)
-    
+
 print(add_integer(0, 2, 7))
