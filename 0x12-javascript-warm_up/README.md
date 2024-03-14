@@ -1,8 +1,10 @@
 # JavaScript - Warm up
 
 This is an introduction to JavaScript. We look at:
+
 - JavaScript syntax
-- Variables
+- Running scripts with command line arguments
+- Variables and constants  - `var`, `let`, `const`
 - Data Types
 - Operators
 - Operator Precedence
@@ -11,5 +13,3 @@ This is an introduction to JavaScript. We look at:
 - Objects and Arrays
 - Intrinsic Objects
 - Module patterns
-- var, let and const
-
