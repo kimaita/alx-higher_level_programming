@@ -34,7 +34,7 @@ def query_db(conn):
     SELECT *
     FROM states
     WHERE name LIKE 'N%'
-    ORDER BY id"""
+    ORDER BY id;"""
     c.execute(sql_query)
     return c.fetchall()
 

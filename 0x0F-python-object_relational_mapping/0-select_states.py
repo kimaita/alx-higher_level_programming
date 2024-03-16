@@ -29,7 +29,7 @@ def query_db(conn):
         tuple(tuple)
     """
     c = conn.cursor()
-    sql_query = """SELECT * FROM states ORDER BY id"""
+    sql_query = """SELECT * FROM states ORDER BY id;"""
     c.execute(sql_query)
     return c.fetchall()
 
