@@ -34,7 +34,7 @@ def query_db(conn):
     return c.fetchall()
 
 
-def execute_task(args, sql_query):
+def execute_task(args):
     """Lists all states from the database hbtn_0e_0_usa
 
     Args:
@@ -43,7 +43,7 @@ def execute_task(args, sql_query):
     """
     if len(args) >= 3:
         conn = connect_db(args[0], args[1], args[2])
-        result = query_db(conn, sql_query)
+        result = query_db(conn)
         for city in result:
             print(city)
 
