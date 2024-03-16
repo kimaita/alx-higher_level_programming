@@ -38,8 +38,14 @@ def query_db(conn, state):
     JOIN states state ON city.state_id = state.id
     WHERE state.name = %s
     ORDER BY city.id;"""
-    c.execute(sql_query, (state,))
-    return c.fetchall()
+    try:
+        c.execute(sql_query, (state,))
+        return c.fetchall()
+    except MySQLdb.Error as e:
+        print(f"MySQL Error: {e}")
+    finally:
+        c.close()
+        conn.close()
 
 
 def execute_task(args):
