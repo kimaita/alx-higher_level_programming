@@ -25,7 +25,7 @@ def query_db(conn):
     Args:
         conn (Connection): MySQLdb Connection to use
 
-    Returns: 
+    Returns:
         tuple(tuple)
     """
     c = conn.cursor()
