@@ -34,7 +34,7 @@ def query_db(conn, state):
     sql_query = """
     SELECT *
     FROM states
-    WHERE name = '{0}'
+    WHERE name = "{0}"
     ORDER BY id"""
     c.execute(sql_query.format(state))
     return c.fetchall()
