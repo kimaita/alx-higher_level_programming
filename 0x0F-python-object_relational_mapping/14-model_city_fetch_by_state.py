@@ -3,7 +3,7 @@
 """
 
 import sys
-from model_state import Base, State
+from model_state import Base
 from model_city import City
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
@@ -15,7 +15,7 @@ if __name__ == "__main__":
                            pool_pre_ping=True)
 
     with Session(engine) as session:
-        stmt = select(City).join(State.cities).order_by('id')
+        stmt = select(City).order_by('id')
 
         for c in session.scalars(stmt):
             print(f"{c.state.name}: ({c.id}) {c.name}")
