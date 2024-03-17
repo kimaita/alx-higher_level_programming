@@ -15,7 +15,7 @@ if __name__ == "__main__":
     with Session(engine) as session:
         stmt = select(State).order_by('id').limit(1)
         try:
-            s = (session.scalars(stmt).one_or_none())
+            s = session.scalars(stmt).one_or_none()
             print(f"{s.id}: {s.name}")
         except Exception as e:
             print('Nothing')
