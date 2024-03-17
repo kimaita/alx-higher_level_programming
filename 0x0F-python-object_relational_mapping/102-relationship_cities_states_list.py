@@ -14,6 +14,6 @@ if __name__ == "__main__":
 
     with Session(engine) as session:
         stmt = select(City).order_by('id')
-        
+
         for city in session.scalars(stmt):
             print(f"{city.id}: {city.name} -> {city.state.name}")
