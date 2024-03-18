@@ -1,7 +1,8 @@
-#!/usr/bin/pythn3
+#!/usr/bin/python3
 """lists all City objects from the database hbtn_0e_101_usa"""
 
 import sys
+from relationship_state import Base, State
 from relationship_city import City
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
