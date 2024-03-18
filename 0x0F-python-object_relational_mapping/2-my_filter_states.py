@@ -34,7 +34,7 @@ def query_db(conn, state):
     sql_query = """
     SELECT *
     FROM states
-    WHERE name = '{}'
+    WHERE name COLLATE utf8mb4_0900_as_cs = '{}'
     ORDER BY id;"""
     c.execute(sql_query.format(state))
     return c.fetchall()
