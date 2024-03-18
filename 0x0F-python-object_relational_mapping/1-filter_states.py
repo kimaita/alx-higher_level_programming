@@ -33,7 +33,7 @@ def query_db(conn):
     sql_query = """
     SELECT *
     FROM states
-    WHERE name LIKE 'N%'
+    WHERE name COLLATE utf8mb4_0900_as_cs LIKE 'N%'
     ORDER BY id;"""
     c.execute(sql_query)
     return c.fetchall()
