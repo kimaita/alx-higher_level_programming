@@ -13,7 +13,7 @@ def fetch_resource(link):
 
 def print_resource(res):
     """displays info about a fetched resource"""
-    print('Body responese:')
+    print('Body response:')
     print(f"\t- type: {type(res)}")
     print(f"\t- content: {res}")
     print(f"\t- utf8 content: {res.decode('utf-8')}")
