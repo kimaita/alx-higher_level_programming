@@ -3,4 +3,5 @@ const origList = require('./100-data').list;
 
 const modList = origList.map((elem, i) => elem * i);
 
+console.log(origList);
 console.log(modList);
