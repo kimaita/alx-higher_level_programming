@@ -9,8 +9,8 @@ request(endpoint, function (error, response, body) {
     const films = JSON.parse(body);
     let filmCount = 0;
     for (const film of films.results) {
-      if (film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
-        filmCount++;
+      for (const char of film.characters) {
+        if (char.split('/').includes('18')) filmCount++;
       }
     }
     console.log(filmCount);
